@@ -1,36 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsnaCampus</title>
-    <link rel="stylesheet" href="assets\css\2ndpage.css">
-</head>
-<body >
-    <div class="card-container">
-        <div class="card" onmouseover="showDetails('details1')" onmouseout="hideDetails()"onclick="location.href='3rdpage.html'">
-            <img src="images/srlpsna.jpeg" alt="Barbell Row" class="card-image">
-            <div class="card-content">
-                <h3>SRL Auditorium</h3>
-                <p>capcity</p>
-            </div>
-        </div>
-        <div class="card" onmouseover="showDetails('details2')" onmouseout="hideDetails()">
-            <img src="images/groundpsna.jpeg" alt="Muscle Growth" class="card-image">
-            <div class="card-content">
-                <h3>Ground</h3>
-            </div>
-          
-        </div>
-        <div class="card" onmouseover="showDetails('details3')" onmouseout="hideDetails()">
-            <img src="images/labpsna.jpeg" alt="Weight Loss" class="card-image">
-            <div class="card-content">
-                <h3>laboratory</h3>
-                <p></p>
-            </div>
-        </div>
-    </div>
-
-    <script src="assets\js\script.js"></script>
-</body>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Minds</title>
+  <link rel="stylesheet" href="assets\css\2ndpage.css">
+ </head>
+ <body>
+  <div class="container">
+    
+   <div class="card"onclick="location.href='3rdpage.html'">
+    <img alt="Image of SRL Auditorium with people sitting and a person standing in front" src="images\srlpsna.jpeg"/>
+    <h3>SRL Auditorium</h3>
+   </div>
+   <div class="card">
+    <img alt="Image of people playing on a ground with a flag in the background" src="images\groundpsna.jpeg"/>
+    <h3>Ground</h3>
+   </div>
+   <div class="card">
+    <img alt="Image of a laboratory with people working on computers" src="images\labpsna.jpeg"/>
+    <h3>Laboratory</h3>
+   </div>
+  </div>
+ </body>
 </html>

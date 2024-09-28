@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Payment Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <style>
+        body {
+            background-color: #E6E6FA; /* Full lavender background */
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .payment-container {
+            background: #fff; /* White background for the container */
+            padding: 20px;
+            border-radius: 10px;
+            width: 600px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            animation: scaleUp 0.5s forwards;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #6b5b95; /* Header color */
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
+
+        .box:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .payment-methods {
+            margin-bottom: 10px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .payment-method input {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .form-group input {
+            padding: 10px;
+            width: calc(100% - 22px);
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus {
+            border: 2px solid #4CAF50;
+        }
+
+        .submit-button {
+            background-color: #FF6F61; /* Coral */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #FF4F3D; /* Darker Coral */
+        }
+
+        .success-message, .error-message, .review-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+
+        .success-message {
+            color: #4CAF50; /* Green color for success message */
+        }
+
+        .error-message {
+            color: #FF5733; /* Red color for error message */
+        }
+
+        .review-message {
+            color: #FFD700; /* Gold color for review message */
+        }
+
+        #qrCode {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-container">
+    <h1>Payment</h1>
+
+    <!-- User Information -->
+    <div class="box">
+        <h2>User Information</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Email Address" required>
+        </div>
+    </div>
+
+    <!-- Billing Address -->
+    <div class="box">
+        <h2>Billing Address</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Street Address" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="City" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="State" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="ZIP Code" required>
+        </div>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="box">
+        <h2>Payment Method</h2>
+        <div class="payment-methods">
+            <div class="payment-method">
+                <input type="radio" name="payment" id="creditCard" checked onclick="hideQRCode()">
+                <label for="creditCard">Credit/Debit Card</label>
+            </div>
+            <div class="payment-method">
+                <input type="radio" name="payment" id="paypal" onclick="showQRCode('paypal')">
+                <label for="paypal">PayPal</label>
+            </div>
+            <div class="payment-method">
+                <input type="radio" name="payment" id="googlePay" onclick="showQRCode('googlePay')">
+                <label for="googlePay">Google Pay</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Details Form -->
+    <div class="box" id="cardDetails">
+        <h2>Card Details</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Card Number" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="Expiry Date (MM/YY)" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="CVV" required>
+        </div>
+    </div>
+
+    <button class="submit-button" onclick="showReview()">Review Payment</button>
+
+    <!-- QR Code Section -->
+    <div id="qrCode">
+        <canvas id="qrcode"></canvas>
+        <p>Scan the QR code to complete your payment.</p>
+    </div>
+
+    <!-- Review Message -->
+    <div id="reviewMessage" class="review-message"></div>
+
+    <!-- Success/Error Messages -->
+    <div id="successMessage" class="success-message">Payment is successful!</div>
+    <div id="errorMessage" class="error-message">There was an error processing your payment. Please try again.</div>
+</div>
+
+<script>
+    const qr = new QRious({
+        element: document.getElementById('qrcode'),
+        size: 200
+    });
+
+    function showQRCode(method) {
+        let paymentLink = '';
+
+        if (method === 'paypal') {
+            paymentLink = 'https://www.paypal.com';
+        } else if (method === 'googlePay') {
+            paymentLink = 'https://pay.google.com';
+        }
+
+        if (paymentLink) {
+            qr.set({ value: paymentLink });
+            const qrCodeDiv = document.getElementById('qrCode');
+            qrCodeDiv.style.display = 'block';
+            qrCodeDiv.style.opacity = 0; // Reset opacity for fade-in effect
+            setTimeout(() => {
+                qrCodeDiv.style.opacity = 1; // Fade in
+            }, 50);
+        }
+    }
+
+    function hideQRCode() {
+        const qrCodeDiv = document.getElementById('qrCode');
+        qrCodeDiv.style.opacity = 0; // Fade out
+        setTimeout(() => {
+            qrCodeDiv.style.display = 'none';
+        }, 300); // Wait for fade-out effect
+    }
+
+    function showReview() {
+        const name = document.querySelector('input[placeholder="Full Name"]').value;
+        const email = document.querySelector('input[placeholder="Email Address"]').value;
+        const address = document.querySelector('input[placeholder="Street Address"]').value;
+        const city = document.querySelector('input[placeholder="City"]').value;
+        const state = document.querySelector('input[placeholder="State"]').value;
+        const zip = document.querySelector('input[placeholder="ZIP Code"]').value;
+        const paymentMethod = document.querySelector('input[name="payment"]:checked').nextSibling.nodeValue.trim();
+
+        const reviewMessage = `
+            <h3>Review Your Payment</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Address:</strong> ${address}, ${city}, ${state}, ${zip}</p>
+            <p><strong>Payment Method:</strong> ${paymentMethod}</p>
+        `;
+
+        document.getElementById('reviewMessage').innerHTML = reviewMessage;
+        document.getElementById('reviewMessage').style.display = 'block';
+    }
+</script>

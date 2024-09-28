@@ -1,72 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
+<html></html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Booking</title>
-    <link rel="stylesheet" href="assets/css/3rdpage.css">
+    <title>SRL Auditorium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            animation: backgroundTransition 0.5s forwards;
+        }
+        @keyframes backgroundTransition {
+            from {
+                background-color: white;
+            }
+            to {
+                background-color: #1a1a2e;
+            }
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .back-button button {
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button button:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+        .tabs, .date-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tabs button, .date-buttons button {
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tabs button:hover, .date-buttons button:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+        .tabs button.active, .date-buttons button.active {
+            background-color: #dc3545;
+            color: white;
+        }
+        .slot {
+            background-color: rgba(22, 33, 62, 0.9);
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .slot:hover {
+            transform: scale(1.05);
+        }
+        .slot h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .slot p {
+            margin: 5px 0;
+        }
+        .slot .time {
+            font-weight: bold;
+        }
+        .slot .duration {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .slot .duration:hover {
+            background-color: #17a2b8;
+        }
+        .slot .duration.active {
+            background-color: #17a2b8;
+        }
+    </style>
+    <script>
+        function toggleActive(element) {
+            const siblings = element.parentNode.children;
+            for (let i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('active');
+            }
+            element.classList.add('active');
+        }document.querySelector("body > div > div.date-buttons > button:nth-child(1)").onclick="location.href='3rdpage.html'"
+        document.querySelector("body > div > div.date-buttons > button:nth-child(2)").setAttribute("onClick", "location.href='3nxt.html'");
+        function toggleDurationActive(element) {
+            element.classList.toggle('active');
+        }
+    </script>
 </head>
-<style>
-    .back-button{
-        width: 40px;
-    }
-</style>
 <body>
     <div class="container">
-        <a href="2ndpage.html" class="back-button">Back</a>
-        <div class="movie-header">
+        <div class="back-button">
+            <button>Back</button>
+        </div>
+        <div class="header">
             <h1>SRL Auditorium</h1>
-            <div class="movie-genres">
-                <span>Events</span>
-                <span>Competition</span>
-            </div>
         </div>
-
-  
-        <div class="date-selector">
-            <button class="date " onclick="location.href='3rdpage.html'">Sat 28 Sep</button>
-            <button class="date" onclick="location.href='3nxt.html'">Sun 29 Sep</button>
-            <button class="date active" onclick="location.href='3nxt1.html'">Mon 30 Sep</button>
-            <button class="date" onclick="location.href='3nxt2.html'">Tue 01 Oct</button>
+        <div class="tabs">
+            <p>Events</p>
+            <p style="padding-left:10px ;">Competition</p>
         </div>
-
-       
-        <div class="cinema-list">
-            <div class="cinema-item">
-                <div class="cinema-details">
-                    <h2>SRL HALL Slot-01</h2>
-                    <p>Food & Beverage</p>
-                </div>
-                <div class="showtimes">
-                    <h4>Slot timing 9:00 AM - 12:00 PM</h4>
-                    <button class="showtime">3-Hours</button>
-                </div>
-            </div>
-
-            <div class="cinema-item">
-                <div class="cinema-details">
-                    <h2>SRL HALL Slot-02</h2>
-                    <p>Food & Beverage</p>
-                </div>
-                <div class="showtimes">
-                    <h4>Slot timing 12:10 PM - 2:10 PM</h4>
-                    <button class="showtime">2-Hours</button>
-                </div>
-            </div>
-
-            <div class="cinema-item">
-                <div class="cinema-details">
-                    <h2>SRL HALL Slot-03</h2>
-                    <p>Food & Beverage</p>
-                </div>
-                <div class="showtimes">
-                    <h4>Slot timing 2:10 PM - 4:10 PM</h4>
-                    <button class="showtime">2-Hours</button>
-                </div>
-            </div>
+        <div class="date-buttons">
+            <button  onclick="toggleActive(this);location.href='3rdpage.html';">Sat 28 Sep</button>
+            <button onClick="toggleActive(this); location.href='3nxt.html';">Tue 01 Oct</button>
+            <button class="active"onclick="toggleActive(this);location.href='3nxt1.html';">Fri 04 Oct</button>
+            <button onclick="toggleActive(this);location.href='3nxt2.html';">Mon 07 Oct</button>
+        </div>
+        <div class="slot">
+            <h2>SRL HALL Slot-01</h2>
+            <p>Food & Beverage</p>
+            <p class="time">Slot timing 9:00 AM - 12:00 PM</p>
+            <div class="duration" onclick="toggleDurationActive(this)">3-Hours</div>
+        </div>
+        <div class="slot">
+            <h2>SRL HALL Slot-02</h2>
+            <p>Food & Beverage</p>
+            <p class="time">Slot timing 12:10 PM - 2:10 PM</p>
+            <div class="duration" onclick="toggleDurationActive(this)">2-Hours</div>
+        </div>
+        <div class="slot">
+            <h2>SRL HALL Slot-03</h2>
+            <p>Food & Beverage</p>
+            <p class="time">Slot timing 2:10 PM - 4:10 PM</p>
+            <div class="duration" onclick="toggleDurationActive(this)">2-Hours</div>
         </div>
     </div>
-
-    <script src="assets/js/script.js"></script>
 </body>
 </html>
+slot page
