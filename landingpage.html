@@ -6,54 +6,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script>
+    <!-- <script>
         setTimeout(function() {
             window.location.href = "loginpage.html"; 
         }, 7000); 
-    </script>
+    </script> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .card-button:hover {
+            background-color: #0056b3;
+        }
+        #page-wrapper > div.wrapper.style2 > div > section > div{
+           margin-left: 400px;
+           width: 900px;
+        }
+        #nav > ul > li:nth-child(2) > form > div{
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        #nav > ul > li:nth-child(2) > form > input[type=text]{
+            
+            width:760px;
+
+        }
+        #nav > ul > li.current_page_item > a{
+           width: 100px;
+           position: relative;
+           right: 150px;
+        }
+        #nav > ul > li:nth-child(2) > form > div{
+            position: relative;
+            left: 500px;
+        }
+    </style>
 </head>
 <body class="homepage is-preload">
     <div id="page-wrapper">
 
-        
         <div id="header-wrapper">
             <div class="container">
-
-        
                 <header id="header">
                     <div class="inner">
-
-                        
                         <h1><a href="index.html" id="logo">BookItNow</a></h1>
-
-                        
                         <nav id="nav">
                             <ul>
                                 <li class="current_page_item"><a href="index.html">Home</a></li>
                                 <li>
                                     <form action="#" method="get" class="search-form">
-                                        <input  type="text" name="search" placeholder="Search..." />
+                                        <input type="text" name="search" placeholder="Search..." />
                                         <div class="dropdown">
-                                            <div class="dropdown">
-                                                <span class="dropbtn">Location &#9660;</span>
-                                                <div class="dropdown-content">
-                                                  <a href="#">Madurai</a>
-                                                  <a href="#">Dindigul</a>
-                                                  <a href="#">Trichy</a>
-                                                </div>
-                                              </div>
-                                              
-                                          
+                                            <span class="dropbtn">Location &#9660;</span>
+                                            <div class="dropdown-content">
+                                                <a href="#">Madurai</a>
+                                                <a href="#">Dindigul</a>
+                                                <a href="#">Trichy</a>
+                                            </div>
+                                        </div>
                                     </form>
                                 </li>
                             </ul>
                         </nav>
-
                     </div>
                 </header>
 
-                
                 <div id="banner">
                     <h2><strong>Unlock Campus Potential:</strong> Smarter Resource Allocation for Everyone!</h2>
                 </div>
@@ -61,124 +121,106 @@
             </div>
         </div>
 
-     
-            <div class="wrapper style1">
-                <div class="inner">
-
-                    
-                    <section class="container box feature1">
-                        <div class="row">
-                            <div class="col-12">
-                                <header class="first major">
-                                    <h2>Empowering Minds, Unlocking Opportunities </h2>
-                                    <p>Your One-Stop Hub for All Things College!...</p>
-                                </header>
-                            </div>
-                            <div class="col-4 col-12-medium">
-                                <section>
-                                    <div class="flex-container">
-                                        <div class="card" style="width: 18rem;">
-                                          <img src="images\psnaclg.jpeg" class="card-img-top" alt="">
-                                          <div class="card-body">
-                                            <h5 class="card-title">PSNA college</h5>
-                                            <p class="card-text">PSNA College of Engineering and Technology in Dindigul, Tamil Nadu, <br>is known for excellence in engineering education. With cutting-edge infrastructure, it promotes research and holistic student development.
-                                            </p>
-                                            <a href="#" id="Book" class="btn btn-primary" style="width: 100px;">Book</a>
-                                          </div>
-                                        </div>
-                                      </div>
-                                </section>
-                            </div>
-                            <div class="col-4 col-12-medium">
-                                <section>
-                                    <div class="flex-container"></div>
-                                        <div class="card" style="width: 18rem;">
-                                          <img src="images\ssmclg.webp" class="card-img-top" alt="">
-                                          <div class="card-body">
-                                            <h5 class="card-title">SSM college</h5>
-                                            <p class="card-text">SSM College of Engineering in Komarapalayam, Tamil Nadu, is recognized for its engineering and technology programs. Affiliated with Anna University, it emphasizes quality education and skill development.
-                                            </p>
-                                            <a href="#" class="btn btn-primary "style="width: 100px;">Book</a>
-                                          </div>
-                                        </div>
-                                      </div>
-                                </section>
-                            </div>
-                            <div class="col-4 col-12-medium">
-                                <section>
-                                    <div class="flex-container"></div>
-                                        <div class="card" style="width: 18rem;">
-                                          <img src="images\abcclg.jpeg" class="card-img-top" alt="">
-                                          <div class="card-body">
-                                            <h5 class="card-title">ABC college</h5>
-                                            <p class="card-text">
-                                                ABC College is a leading institution offering diverse programs across various disciplines. 
-                                                Known for its commitment to quality education,
-                                                <br> it fosters holistic development with modern infrastructure and experienced faculty.
-                                            </p>
-                                            <a href="#" class="btn btn-primary"style="width: 100px;">Book</a>
-                                          </div>
-                                        </div>
-                                      </div>
-                                </section>
-                            </div>
+        <div class="wrapper style1">
+            <div class="inner">
+                <section class="container box feature1">
+                    <div class="row">
+                        <div class="col-12">
+                            <header class="first major">
+                                <h2>Empowering Minds, Unlocking Opportunities </h2>
+                                <p>Your One-Stop Hub for All Things College!...</p>
+                            </header>
                         </div>
-                    </section>
-
-                </div>
-            </div>
-            <div class="wrapper style2">
-                <div class="inner">
-
-                   
-                    <section class="container box feature2">
-                        <div class="row">
-                            <div class="col-6 col-12-medium">
-                                <section>
-                                    <header class="major">
-                                        <h2>Campus Amenities</h2>
-                                    </header>
-                                    <p>Colleges offer a range of facilities to enhance student life and academic success.
-                                         Key amenities include well-equipped libraries and laboratories for research and practical learning. 
-                                         Students benefit from on-campus hostels, sports facilities, and a cafeteria for dining.<br>
-                                          Additional resources like Wi-Fi, auditoriums, and health centers support both education and well-being.
-                                           Many colleges also provide student clubs and career guidance centers to foster personal growth and skill development.</p>
-                                </section>
-                            </div>
+                        <!-- First College Card -->
+                        <div class="col-4 col-12-medium">
+                            <section>
+                                <div class="card">
+                                    <img src="images/psnaclg.jpeg" class="card-img-top" alt="PSNA College">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PSNA College</h5>
+                                        <p class="card-text">PSNA College of Engineering and Technology in Dindigul, Tamil Nadu, is known for excellence in engineering education.</p>
+                                        <a href="#" class="btn btn-primary">Book</a>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
-                    </section>
 
-                </div>
+                        <!-- Second College Card (SSM College) -->
+                        <div class="col-4 col-12-medium">
+                            <section>
+                                <div class="card">
+                                    <img src="images/ssmclg.webp" class="card-img-top" alt="SSM College">
+                                    <div class="card-body">
+                                        <h5 class="card-title">SSM College</h5>
+                                        <p class="card-text">SSM College of Engineering in Komarapalayam, Tamil Nadu, is recognized for its engineering and technology programs.</p>
+                                        <a href="ssm/2ndpage.html" class="btn btn-primary">Book</a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- Third College Card (ABC College) -->
+                        <div class="col-4 col-12-medium">
+                            <section>
+                                <div class="card">
+                                    <img src="images/abcclg.jpeg" class="card-img-top" alt="ABC College">
+                                    <div class="card-body">
+                                        <h5 class="card-title">ABC College</h5>
+                                        <p class="card-text">ABC College is a leading institution offering diverse programs across various disciplines. 
+                                            Known for its commitment to quality education,
+                                            <br> it fosters holistic development 
+                </p>
+                                        <a href="abc/2ndpage.html" class="btn btn-primary">Book</a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
 
-       
+        <div class="wrapper style2">
+            <div class="inner">
+                <section class="container box feature2">
+                    <div class="row">
+                        <div class="col-6 col-12-medium">
+                            <section>
+                                <header class="major">
+                                    <h2>Campus Amenities</h2>
+                                </header>
+                                <p>Colleges offer a range of facilities to enhance student life and academic success.
+                                    Key amenities include well-equipped libraries and laboratories for research and practical learning. 
+                                    Students benefit from on-campus hostels, sports facilities, and a cafeteria for dining.<br>
+                                     Additional resources like Wi-Fi, auditoriums, and health centers support both education and well-being.
+                                      Many colleges also provide student clubs and career guidance centers to foster personal growth and skill development</p>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
         <div id="footer-wrapper">
             <footer class="footer">
                 <div class="footer-content">
-                  <div class="social-links">
-                    <a href="https://www.facebook.com" target="_blank">
-                      <img src="images\facebook.webp" alt="Facebook" class="social-icon">
-                    </a>
-                    <a href="https://www.instagram.com" target="_blank">
-                      <img src="images\insta.webp" alt="Instagram" class="social-icon">
-                    </a>
-                    <a href="https://www.linkedin.com" target="_blank">
-                        <img src="images\linkedin.webp" alt="LinkedIn" class="social-icon">
-                      </a>
-                    <a href="mailto:example@example.com">
-                      <img src="images\mail.webp" alt="Email" class="social-icon">
-                    </a>
-                  </div>
-                  <div class="contact-info">
-                    <p>Contact-info <br>
-                       santhana peer - 87788 66772 <br>
-                       Percyjone - 6382956984 <br>
-                       kelvin- 9150825579 <br>
-                       Mary sujitha-9952651034</p>
-                    <p>Email: <a href="mailto:example@example.com">example@example.com</a></p>
-                  </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com" target="_blank"><img src="images/facebook.webp" alt="Facebook" class="social-icon"></a>
+                        <a href="https://www.instagram.com" target="_blank"><img src="images/insta.webp" alt="Instagram" class="social-icon"></a>
+                        <a href="https://www.linkedin.com" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" class="social-icon"></a>
+                        <a href="mailto:example@example.com"><img src="images/mail.webp" alt="Email" class="social-icon"></a>
+                    </div>
+                    <div class="contact-info">
+                        <p>Contact-info:<br>santhana peer - 87788 66772<br>Percyjone - 6382956984<br>kelvin- 9150825579<br>Mary sujitha-9952651034</p>
+                        <p>Email: <a href="mailto:example@example.com">example@example.com</a></p>
+                    </div>
                 </div>
-              </footer>
- <script src="assets\js\script.js"></script>             
+            </footer>
+        </div>
+
+    </div>
+
+    <script src="assets/js/script.js"></script>
 </body>
+</html>

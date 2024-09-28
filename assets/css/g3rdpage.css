@@ -1,0 +1,62 @@
+.date-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button {
+    width: 30px;
+    height: 30px;
+    background-color: lightgray;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.nav-button.left-button::before,
+.nav-button.right-button::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid gray;
+    border-right: 2px solid gray;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nav-button.left-button::before {
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.nav-button.right-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.date-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.date-button {
+    background-color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.date-button.active {
+    background-color: #FF5C5C;
+    color: white;
+}
+
+.date-button span {
+    display: block;
+    font-size: 10px;
+    font-weight: normal;
+}

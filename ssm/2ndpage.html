@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Minds</title>
+  <style>
+    @keyframes changeBackground {
+        0% {
+          background-color: #f5f5f5;
+        }
+        100% {
+          background-color: #1a1a2e;
+        }
+     }
+    
+     @keyframes changeCardColor {
+        0% {
+          background-color: #d3d3d3;
+          color: #fff;
+        }
+        100% {
+          background-color: #fff;
+          color: #000;
+        }
+     }
+    
+     @keyframes cardHover {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        100% {
+          transform: scale(1.05);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+     }
+     body > div > div:nth-child(1){
+        position: relative;
+        right: 50px;
+        width: 300px;
+     }
+     body > div > div:nth-child(2){
+        position: relative;
+        left:10px;
+        bottom: 30px;
+        width: 300px;
+     }
+     body > div > div:nth-child(3){
+        position: relative;
+        left: 90px;
+        top: 10px;
+        width: 300px;
+     }
+    
+     body {
+        font-family: Arial, sans-serif;
+        animation: changeBackground 2s forwards;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+     }
+    
+     .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 20px;
+     }
+    
+     .card {
+        border-radius: 10px;
+        overflow: hidden;
+        width: 250px;
+        height: 350px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: changeCardColor 2s forwards;
+        transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+     }
+    
+     .card:hover {
+        animation: cardHover 0.3s forwards;
+        color: #fff;
+     }
+    
+     .card img {
+        width: 100%;
+        height: 200px;
+     }
+    
+     .card h3 {
+        margin: 10px 0 5px;
+        font-size: 18px;
+     }
+    
+     .card p {
+        margin: 0 0 10px;
+        font-size: 14px;
+     }
+    
+     .card:nth-child(1) {
+        transform: translateY(20px);
+     }
+    
+     .card:nth-child(2) {
+        transform: translateY(-20px);
+     }
+    
+     .card:nth-child(3) {
+        transform: translateY(20px);
+     }
+  </style>
+ </head>
+
+ <body>
+  <div class="container">
+    
+   <div class="card"onclick="location.href='3rdpage.html'">
+    <img alt="Image of  Auditorium with people sitting and a person standing in front" src="C:\Users\percy\Downloads\html5up-zerofour\images\ssmauditorium.jpeg"/>
+    <h3>Auditorium</h3>
+   </div>
+   <div class="card" onclick="location.href='g3rdpage.html'">
+    <img alt="Image of people playing on a ground with a flag in the background" src="C:\Users\percy\Downloads\html5up-zerofour\images\ssmground.jpeg"/>
+    <h3>Ground</h3>
+   </div>
+   <div class="card" onclick="location.href='l3rdpage.html'">
+    <img alt="Image of a laboratory with people working on computers" src="C:\Users\percy\Downloads\html5up-zerofour\images\ssmlab.jpeg"/>
+    <h3>Laboratory</h3>
+   </div>
+  </div>
+ </body>
+</html>
