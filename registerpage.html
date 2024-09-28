@@ -1,0 +1,207 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a2e;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #2e2e3a;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-box {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #f6eded;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            color: #cdc4c4;
+            border: 1px solid #cac2c2;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        input[type="date"] {
+            color: #555;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #6a6aff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h2>Sign up</h2>
+            <p>Create an account to continue!</p>
+            <form id="registrationForm">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Lois Becket" required>
+                    <div id="nameError" class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Loisbecket@gmail.com" required>
+                    <div id="emailError" class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="birthdate">Birth of Date</label>
+                    <input type="date" id="birthdate" value="2024-03-18" required>
+                    <div id="birthdateError" class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+1 (454) 726-0592" required>
+                    <div id="phoneError" class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Set Password</label>
+                    <input type="password" id="password" placeholder="" required>
+                    <div id="passwordError" class="error"></div>
+                </div>
+                <button type="submit" class="register-btn">Register</button>
+                <p>Already have an account? <a href="#">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+          
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('birthdateError').textContent = '';
+            document.getElementById('phoneError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+
+           
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const birthdate = document.getElementById('birthdate').value;
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            let valid = true;
+
+            
+            if (name === '') {
+                document.getElementById('nameError').textContent = 'Full name is required.';
+                valid = false;
+            }
+            if (email === '') {
+                document.getElementById('emailError').textContent = 'Email is required.';
+                valid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById('emailError').textContent = 'Email is invalid.';
+                valid = false;
+            }
+            if (birthdate === '') {
+                document.getElementById('birthdateError').textContent = 'Birth date is required.';
+                valid = false;
+            }
+            if (phone === '') {
+                document.getElementById('phoneError').textContent = 'Phone number is required.';
+                valid = false;
+            }
+            if (password === '') {
+                document.getElementById('passwordError').textContent = 'Password is required.';
+                valid = false;
+            } else if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters.';
+                valid = false;
+            }
+
+           
+            if (valid) {
+                alert('Account created successfully!');
+               
+            }
+        });
+    </script>
+</body>
+</html>

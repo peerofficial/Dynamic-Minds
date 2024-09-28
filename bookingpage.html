@@ -1,0 +1,158 @@
+<html></html>
+<head>
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            background-color: #2e2e3a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .left {
+            background-image: url('sandbox:/mnt/data/resized_campus_image.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 400px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center; 
+        }
+        .left img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .left .logo {
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .left .back-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .right {
+            padding: 40px;
+            width: 400px;
+            color: white;
+        }
+        .right h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .right p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .right form {
+            display: flex;
+            flex-direction: column;
+        }
+        .right form input {
+            background-color: #3e3e4e;
+            border: none;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+        }
+        .right form input::placeholder {
+            color: #b0b0b0;
+        }
+        .right form .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .right form .checkbox-container input {
+            margin-right: 10px;
+        }
+        .right form .checkbox-container label {
+            font-size: 14px;
+        }
+        .right form .checkbox-container a {
+            color: #6a6aff;
+            text-decoration: none;
+        }
+        .right form .checkbox-container a:hover {
+            text-decoration: underline;
+        }
+        .right form button {
+            background-color: #6a6aff;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .right form .social-login {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .right form .social-login button {
+            background-color: #3e3e4e;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .right form .social-login button i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <div class="left">
+                <img src="Leonardo_Phoenix_A_photorealistic_image_depicting_a_bustling_u_3.jpg" alt="Booking">
+                <div class="logo">WELCOME!</div>
+                <button class="back-button">REGISTER</button>
+            </div>
+        <div class="right">
+            <h2>Create an account</h2>
+            <p>Already have an account? <a href="#">Log in</a></p>
+            <form>
+                <input type="text" placeholder="First name">
+                <input type="text" placeholder="Last name">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Enter your password">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+                </div>
+                <button type="submit">Create account</button>
+                <div class="social-login">
+                    <button type="button"><i class="fab fa-google"></i> Google</button>
+                    <button type="button"><i class="fab fa-apple"></i> Apple</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
