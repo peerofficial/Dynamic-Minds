@@ -110,20 +110,25 @@
         .slot .duration.active {
             background-color: #17a2b8;
         }
-    </style>
-    <script>
-        function toggleActive(element) {
-            const siblings = element.parentNode.children;
-            for (let i = 0; i < siblings.length; i++) {
-                siblings[i].classList.remove('active');
-            }
-            element.classList.add('active');
-        }document.querySelector("body > div > div.date-buttons > button:nth-child(1)").onclick="location.href='3rdpage.html'"
-        document.querySelector("body > div > div.date-buttons > button:nth-child(2)").setAttribute("onClick", "location.href='3nxt.html'");
-        function toggleDurationActive(element) {
-            element.classList.toggle('active');
+
+
+        .slot {
+            background-color: #1a1a2e;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: white;
         }
-    </script>
+        .slot-header {
+            font-size: 1.2em;
+        }
+        .slot-timing {
+            font-size: 1em;
+            color: lightgreen;
+        }
+        
+    </style>
+   
 </head>
 <body>
     <div class="container">
@@ -147,21 +152,66 @@
             <h2>SRL HALL Slot-01</h2>
             <p>Food & Beverage</p>
             <p class="time">Slot timing 9:00 AM - 12:00 PM</p>
-            <div class="duration" onclick="toggleDurationActive(this)">3-Hours</div>
+            <div class="duration" onclick="toggleDurationActive(this);location.href='bookingpage.html';">3-Hours</div>
         </div>
         <div class="slot">
             <h2>SRL HALL Slot-02</h2>
             <p>Food & Beverage</p>
             <p class="time">Slot timing 12:10 PM - 2:10 PM</p>
-            <div class="duration" onclick="toggleDurationActive(this)">2-Hours</div>
+            <div class="duration" onclick="toggleDurationActive(this);location.href='bookingpage.html';">2-Hours</div>
         </div>
         <div class="slot">
             <h2>SRL HALL Slot-03</h2>
             <p>Food & Beverage</p>
             <p class="time">Slot timing 2:10 PM - 4:10 PM</p>
-            <div class="duration" onclick="toggleDurationActive(this)">2-Hours</div>
+            <div class="duration" onclick="toggleDurationActive(this);location.href='bookingpage.html';">2-Hours</div>
         </div>
+        <button id="customized-slot-btn" class="slot-button">Customized Slot</button>
+
     </div>
+    <script>
+        function toggleActive(element) {
+            const siblings = element.parentNode.children;
+            for (let i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('active');
+            }
+            element.classList.add('active');
+        }document.querySelector("body > div > div.date-buttons > button:nth-child(1)").onclick="location.href='3rdpage.html'"
+        document.querySelector("body > div > div.date-buttons > button:nth-child(2)").setAttribute("onClick", "location.href='3nxt.html'");
+        function toggleDurationActive(element) {
+            element.classList.toggle('active');
+        }
+
+        document.getElementById('customized-slot-btn').addEventListener('click', function() {
+            console.log('Customized slot button clicked'); // For debugging
+            
+            const newSlot = document.createElement('div');
+            newSlot.classList.add('slot');
+            newSlot.style.border = '1px solid red'; // Add styles to make it visible
+            newSlot.style.padding = '10px';
+        
+            newSlot.innerHTML = `
+                <div class="slot-header">
+                    <h2>Customized Slot</h2>
+                    <p>Food & Beverage</p>
+                    <p>Slot timing 4:10 PM - 6:10 PM</p>
+                </div>
+                <div class="slot-timing">
+                    <span class="duration">2-Hours</span>
+                </div>
+            `;
+            
+            const slotContainer = document.querySelector('.slot-container'); // Adjust this if necessary
+            if (slotContainer) {
+                slotContainer.appendChild(newSlot);
+                console.log('New slot added successfully');
+            } else {
+                console.error('Slot container not found');
+            }
+        });
+        
+        
+    </script>
 </body>
 </html>
 slot page

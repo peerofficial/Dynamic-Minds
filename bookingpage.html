@@ -1,120 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Minds</title>
-  <style>
-   @keyframes changeBackground {
-      0% {
-        background-color: #f5f5f5;
-      }
-      100% {
-        background-color: #1a1a2e;
-      }
-   }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <style>
+        body {
+            background-color: #E6E6FA; /* Full lavender background */
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            animation: fadeIn 1s;
+        }
 
-   @keyframes changeCardColor {
-      0% {
-        background-color: #d3d3d3;
-        color: #fff;
-      }
-      100% {
-        background-color: #fff;
-        color: #000;
-      }
-   }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-   @keyframes cardHover {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      100% {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-   }
+        .payment-container {
+            background: #fff; /* White background for the container */
+            padding: 20px;
+            border-radius: 10px;
+            width: 600px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            animation: scaleUp 0.5s forwards;
+        }
 
-   body {
-      font-family: Arial, sans-serif;
-      animation: changeBackground 2s forwards;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-image: url(campus bg.jpg); /* Add your background image path here */
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-   }
+        @keyframes scaleUp {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
 
-   .container {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 20px;
-   }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #6b5b95; /* Header color */
+        }
 
-   .card {
-      border-radius: 10px;
-      overflow: hidden;
-      width: 250px;
-      height: 350px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      animation: changeCardColor 2s forwards;
-      transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
-   }
+        .box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
 
-   .card:hover {
-      animation: cardHover 0.3s forwards;
-      color: #fff;
-   }
+        .box:hover {
+            background: rgba(255, 255, 255, 1);
+        }
 
-   .card img {
-      width: 100%;
-      height: 200px;
-   }
+        .form-group {
+            margin: 15px 0;
+        }
 
-   .card h3 {
-      margin: 10px 0 5px;
-      font-size: 18px;
-   }
+        .form-group input {
+            padding: 10px;
+            width: calc(100% - 22px);
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
 
-   .card p {
-      margin: 0 0 10px;
-      font-size: 14px;
-   }
+        .form-group input:focus {
+            border: 2px solid #4CAF50;
+        }
 
-   .card:nth-child(1) {
-      transform: translateY(20px);
-   }
+        .submit-button {
+            background-color: #FF6F61; /* Coral */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
 
-   .card:nth-child(2) {
-      transform: translateY(-20px);
-   }
+        .submit-button:hover {
+            background-color: #FF4F3D; /* Darker Coral */
+        }
 
-   .card:nth-child(3) {
-      transform: translateY(20px);
-   }
-  </style>
- </head>
- <body>
-  <div class="container">
-   <div class="card">
-    <img alt="Image of SRL Auditorium with people sitting and a person standing in front" src="images\srlpsna.jpeg"/>
-    <h3>SRL Auditorium</h3>
-   </div>
-   <div class="card">
-    <img alt="Image of people playing on a ground with a flag in the background" src="images\groundpsna.jpeg"/>
-    <h3>Ground</h3>
-   </div>
-   <div class="card">
-    <img alt="Image of a laboratory with people working on computers" src="images\labpsna.jpeg"/>
-    <h3>Laboratory</h3>
-   </div>
-  </div>
- </body>
+        #qrCode {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            color: #4CAF50; /* Green color for success message */
+        }
+
+        .checkmark {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .checkmark img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .payment-details {
+            margin-top: 10px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .detail-item span {
+            font-size: 14px;
+        }
+
+        .detail-item span.value {
+            font-weight: bold;
+        }
+
+        .divider {
+            border-bottom: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        .payment-summary {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #4caf50;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-container" id="paymentContainer">
+    <h1>Payment</h1>
+
+    <div class="box">
+        <h2>User Information</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Email Address" required>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>Billing Address</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Street Address" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="City" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="State" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="ZIP Code" required>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>Payment Method</h2>
+        <div class="payment-methods">
+            <div class="payment-method">
+                <input type="radio" name="payment" id="creditCard" checked onclick="hideQRCode()">
+                <label for="creditCard">Credit/Debit Card</label>
+            </div>
+            <div class="payment-method">
+                <input type="radio" name="payment" id="paypal" onclick="showQRCode('paypal')">
+                <label for="paypal">PayPal</label>
+            </div>
+            <div class="payment-method">
+                <input type="radio" name="payment" id="googlePay" onclick="showQRCode('googlePay')">
+                <label for="googlePay">Google Pay</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="box" id="cardDetails">
+        <h2>Card Details</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Card Number" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="Expiry Date (MM/YY)" required>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="CVV" required>
+        </div>
+    </div>
+
+    <button class="submit-button" onclick="showReview()">Review Payment</button>
+
+    <div id="qrCode">
+        <canvas id="qrcode"></canvas>
+        <p>Scan the QR code to complete your payment.</p>
+    </div>
+
+    <div id="reviewMessage" class="review-message"></div>
+    <div id="successMessage" class="success-message">Payment is successful!</div>
+</div>
+
+<div class="payment-container" id="successContainer" style="display: none;">
+    <h1>Payment Success</h1>
+    <div class="checkmark">
+        <img src="https://img.icons8.com/fluency/48/000000/checkmark.png" alt="Success">
+    </div>
+    <div class="payment-details">
+        <div class="detail-item">
+            <span>Amount</span>
+            <span class="value">RS:4435.00</span>
+        </div>
+        <div class="detail-item">
+            <span>Bill ID</span>
+            <span class="value">#BILL00123</span>
+        </div>
+        <div class="detail-item">
+            <span>Date</span>
+            <span class="value">12 May 2022</span>
+        </div>
+        <div class="divider"></div>
+        <div class="payment-summary">
+            <span>Total Paid</span>
+            <span>RS:4435.00</span>
+        </div>
+    </div>
+    <a href="#" class="back-button">Back to Calendar</a>
+</div>
+
+<script>
+    const qr = new QRious({
+        element: document.getElementById('qrcode'),
+        size: 200
+    });
+
+    function showQRCode(method) {
+        let paymentLink = '';
+
+        if (method === 'paypal') {
+            paymentLink = 'https://www.paypal.com';
+        } else if (method === 'googlePay') {
+            paymentLink = 'https://pay.google.com';
+        }
+
+        if (paymentLink) {
+            qr.set({ value: paymentLink });
+            const qrCodeDiv = document.getElementById('qrCode');
+            qrCodeDiv.style.display = 'block';
+            qrCodeDiv.style.opacity = 0; // Reset opacity for fade-in effect
+            setTimeout(() => {
+                qrCodeDiv.style.opacity = 1; // Fade in
+            }, 50);
+        }
+    }
+
+    function hideQRCode() {
+        const qrCodeDiv = document.getElementById('qrCode');
+        qrCodeDiv.style.opacity = 0; // Fade out
+        setTimeout(() => {
+            qrCodeDiv.style.display = 'none';
+        }, 300); // Wait for fade-out effect
+    }
+
+    function showReview() {
+        const name = document.querySelector('input[placeholder="Full Name"]').value;
+        const email = document.querySelector('input[placeholder="Email Address"]').value;
+        const address = document.querySelector('input[placeholder="Street Address"]').value;
+        const city = document.querySelector('input[placeholder="City"]').value;
+        const state = document.querySelector('input[placeholder="State"]').value;
+        const zip = document.querySelector('input[placeholder="ZIP Code"]').value;
+        const paymentMethod = document.querySelector('input[name="payment"]:checked').nextSibling.nodeValue.trim();
+
+        const reviewMessage = `
+            <h3>Review Your Payment</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Address:</strong> ${address}, ${city}, ${state}, ${zip}</p>
+            <p><strong>Payment Method:</strong> ${paymentMethod}</p>
+        `;
+
+        document.getElementById('reviewMessage').innerHTML = reviewMessage;
+        document.getElementById('reviewMessage').style.display = 'block';
+
+        // Simulate success after review
+        setTimeout(() => {
+            document.getElementById('paymentContainer').style.display = 'none';
+            document.getElementById('successContainer').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'block';
+        }, 2000); // Simulated delay for success
+    }
+</script>
+
+</body>
 </html>
